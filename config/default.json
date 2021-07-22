@@ -1,4 +1,0 @@
-{
-    "mongoURI" : "mongodb+srv://King-Sly:Dashing123!@cluster0.qzxwa.mongodb.net/social_connector?retryWrites=true&w=majority",
-    "jwtSecret" : "MEDIACONNECTOR"
-}

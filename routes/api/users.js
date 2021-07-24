@@ -73,7 +73,12 @@ router.post('/', [
     
     // res.send('User route');
 });
-
+// TESTING SITE TO TEST ALL MY USERS
+// router.get('/', async (req, res) => {
+//   const filter = {};
+//   const allUsers =  await User.find(filter);
+//   res.json(allUsers);
+// })
 
 
 

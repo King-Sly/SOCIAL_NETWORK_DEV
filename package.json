@@ -29,7 +29,8 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.3",
     "proxy": "^1.0.2",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",

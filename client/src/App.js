@@ -8,23 +8,24 @@ import Login  from './components/auth/Login';
 //Redux
 import { Provider } from 'react-redux';
 import store from "./store";
-
+import Alert from './components/layout/Alert';
 
 const App = () => {
   return (
     <Provider store = {store}>
-    <Router>
-      <Fragment>
-        <Navbar/>
-        <Route exact path = "/" component = {Landing}></Route>
-        <section className = "container">
-          <Switch>
-            <Route exact path = "/register" component={Register}></Route>
-            <Route exact path = "/login" component = {Login}></Route>
-          </Switch>
-        </section>
-      </Fragment>
-    </Router>
+      <Router>
+        <Fragment>
+          <Navbar/>
+          <Route exact path = "/" component = {Landing}></Route>
+          <section className = "container">
+            <Alert/>
+            <Switch>
+              <Route exact path = "/register" component={Register}></Route>
+              <Route exact path = "/login" component = {Login}></Route>
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
     </Provider>
   );
 }

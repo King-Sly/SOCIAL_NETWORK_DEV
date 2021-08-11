@@ -6,6 +6,7 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 const Register = ({ isAuthenticated, setAlert, register }) => {
+  
   const [formData, setFormData] = useState({
     name : '',
     email : '',
@@ -13,6 +14,9 @@ const Register = ({ isAuthenticated, setAlert, register }) => {
     password2 : ''
   });
 
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
   const onChange = e => setFormData({...formData, [e.target.name] : e.target.value});
 
 

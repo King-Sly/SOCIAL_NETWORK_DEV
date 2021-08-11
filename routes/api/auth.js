@@ -6,6 +6,7 @@ const {check, validationResult} = require('express-validator');
 const bcrypt = require("bcryptjs");
 const jwt = require('jsonwebtoken');
 const config = require('config');
+
 // @route   GET api/auth
 // @desc    Test route
 // @access  Public
@@ -48,7 +49,7 @@ router.post('/', [
     //     password
     // });
     
-    console.log(user.password + " " + password);
+    //console.log(user.password + " " + password);
     const isMatch = await bcrypt.compare(password, user.password);
     if(!isMatch) {
         return res.status(400).json({errors : [{msg : "Invalid Credentials"}]});

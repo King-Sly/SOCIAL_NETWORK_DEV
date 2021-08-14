@@ -7,7 +7,8 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT, 
+    CLEAR_PROFILE
 } from "./types";
 
 import setAuthToken from "../utils/setAuthToken";
@@ -16,6 +17,7 @@ export const logout  = () => dispatch => {
     //when we click on logout,
     //we delete and clear the token
     //Clear the profile
+    dispatch({type : CLEAR_PROFILE});
     dispatch({type : LOGOUT});
 }
 

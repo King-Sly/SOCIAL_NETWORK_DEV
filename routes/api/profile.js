@@ -36,7 +36,7 @@ router.post('/', [
     check('skills', 'Skills is required').not().isEmpty()
 ],  
     async (req, res) => {
-        console.log("KDKD1234");
+        // console.log("KDKD1234");
         //PERFORM OUR VALIDATION==With the skills and status needed
         const errors = validationResult(req);
         if(!errors.isEmpty()) {

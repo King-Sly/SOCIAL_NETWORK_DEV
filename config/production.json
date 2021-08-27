@@ -1,6 +1,0 @@
-{
-    "mongoURI" : "mongodb+srv://King-Sly:Dashing123!@cluster0.qzxwa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    "jwtSecret" : "NESTLEPURELIFE",
-    "githubClientId" : "0fdfeac2f2ada28fb5bc", 
-    "githubSecret" : "5078ee606d524bb60f3e9a123c35c12ba7dad190"
-}

@@ -1,53 +1,45 @@
-import './App.css';
+import React, { Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
-import React, { Fragment, useEffect } from "react";
-import Landing from "./components/layout/Landing";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import  Register  from './components/auth/Register';
-import Login  from './components/auth/Login';
-import Dashboard from './components/dashboard/dashboard';
-import EditProfile from './components/profile-forms/EditProfile';
-import CreateProfile from './components/profile-forms/CreateProfile';
-import PrivateRoute from './components/routing/PrivateRoute';
-//Redux
+import Landing from './components/layout/Landing';
+import Routes from './components/routing/Routes';
+import { LOGOUT } from './actions/types';
+
+// Redux
 import { Provider } from 'react-redux';
-import store from "./store";
-import Alert from './components/layout/Alert';
+import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-if(localStorage.token) {
-  setAuthToken(localStorage.token);
-}
+import './App.css';
 
 const App = () => {
-
-
   useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
     store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
   }, []);
 
-  
   return (
-    <Provider store = {store}>
+    <Provider store={store}>
       <Router>
         <Fragment>
-          <Navbar/>
-          <Route exact path = "/" component = {Landing}></Route>
-          <section className = "container">
-            <Alert/>
-            <Switch>
-              <Route exact path = "/register" component={Register}></Route>
-              <Route exact path = "/login" component = {Login}></Route>
-              <PrivateRoute exact path = "/dashboard" component = {Dashboard}></PrivateRoute>
-              <PrivateRoute exact path = "/create-profile" component = {CreateProfile}></PrivateRoute>
-              <PrivateRoute exact path = "/edit-profile" component = {EditProfile}></PrivateRoute>
-            </Switch>
-          </section>
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Landing} />
+            <Route component={Routes} />
+          </Switch>
         </Fragment>
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;
